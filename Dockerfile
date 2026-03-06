@@ -6,12 +6,13 @@ WORKDIR /build
 
 RUN apt-get update && apt-get install -y git pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
 
-# clone openfang repo
+# clone OpenFang repo
 RUN git clone https://github.com/RightNow-AI/openfang.git .
 
-# checkout version
+# checkout specific version
 RUN git checkout v0.3.24
 
+# build binary
 RUN cargo build --release --bin openfang
 
 
@@ -23,8 +24,6 @@ COPY --from=builder /build/target/release/openfang /usr/local/bin/
 COPY --from=builder /build/agents /opt/openfang/agents
 
 EXPOSE 4200
-
-VOLUME /data
 
 ENV OPENFANG_HOME=/data
 
