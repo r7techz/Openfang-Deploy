@@ -1,27 +1,15 @@
 # syntax=docker/dockerfile:1
 
-FROM rust:1-slim-bookworm AS builder
-
-WORKDIR /build
-
-RUN apt-get update && apt-get install -y git pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
-
-# clone OpenFang repo
-RUN git clone https://github.com/RightNow-AI/openfang.git .
-
-# checkout specific version
-RUN git checkout v0.3.24
-
-# build binary
-RUN cargo build --release --bin openfang
-
-
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl ca-certificates && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /build/target/release/openfang /usr/local/bin/
-COPY --from=builder /build/agents /opt/openfang/agents
+WORKDIR /app
+
+RUN curl -L https://github.com/RightNow-AI/openfang/releases/download/v0.3.24/openfang-x86_64-unknown-linux-gnu.tar.gz \
+  -o openfang.tar.gz \
+  && tar -xzf openfang.tar.gz \
+  && mv openfang /usr/local/bin/openfang
 
 EXPOSE 4200
 
