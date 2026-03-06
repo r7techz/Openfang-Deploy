@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  openfang:
+    build: .
+    container_name: openfang
+    ports:
+      - "4200:4200"
+
+    volumes:
+      - openfang-data:/data
+
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+
+    restart: unless-stopped
+
+volumes:
+  openfang-data:
