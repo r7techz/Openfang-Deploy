@@ -1,0 +1,17 @@
+[core]
+api_key = "admin123"
+api_listen = "0.0.0.0:4200"
+
+[hands.browser]
+model_provider = "gemini"
+model = "gemini-2.0-flash"
+model_api_key_env = "AIzaSyAngT1cYyt863FwjA2094fe8lj3Dwi3D3g"
+
+[default_model]
+provider = "gemini"
+model = "gemini-2.0-flash"
+api_key_env = "AIzaSyAngT1cYyt863FwjA2094fe8lj3Dwi3D3g"
+
+
+[network]
+listen_addr = "0.0.0.0:4200"
