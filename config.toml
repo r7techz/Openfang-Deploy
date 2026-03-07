@@ -3,20 +3,14 @@ api_key = "admin123"
 api_listen = "0.0.0.0:4200"
 
 [default_model]
-provider = "groq"
-model = "llama-3.1-8b-instant"
-api_key_env = "GROQ_API_KEY"
-
-[fallback_models]
-providers = [
-    { provider = "gemini", model = "gemini-2.0-flash", api_key_env = "GEMINI_API_KEY" },
-    { provider = "groq", model = "llama-3.3-70b-versatile", api_key_env = "GROQ_API_KEY" },
-]
+provider = "gemini"
+model = "gemini-2.0-flash"
+api_key_env = "GEMINI_API_KEY"
 
 [hands.browser]
-model_provider = "groq"
-model = "llama-3.1-8b-instant"
-model_api_key_env = "GROQ_API_KEY"
+model_provider = "gemini"
+model = "gemini-2.0-flash"
+model_api_key_env = "GEMINI_API_KEY"
 
 [telegram]
 enabled = true
