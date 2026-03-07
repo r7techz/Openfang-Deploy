@@ -25,7 +25,10 @@ RUN apt-get update && apt-get install -y \
     fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
 
-# install playwright correctly
+# create python command
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+# install playwright
 RUN pip3 install --break-system-packages playwright \
     && python3 -m playwright install chromium
 
