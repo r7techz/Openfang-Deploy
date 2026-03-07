@@ -25,12 +25,12 @@ RUN apt-get update && apt-get install -y \
     fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
 
-# install playwright
-RUN pip3 install playwright && playwright install chromium
+# install playwright correctly
+RUN pip3 install --break-system-packages playwright \
+    && python3 -m playwright install chromium
 
 WORKDIR /app
 
-# install OpenFang
 RUN curl -L https://github.com/RightNow-AI/openfang/releases/download/v0.3.26/openfang-x86_64-unknown-linux-gnu.tar.gz \
   -o openfang.tar.gz \
   && tar -xzf openfang.tar.gz \
