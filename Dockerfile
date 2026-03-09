@@ -16,7 +16,7 @@ RUN pip3 install --break-system-packages playwright \
 
 WORKDIR /app
 
-RUN curl -L https://github.com/RightNow-AI/openfang/releases/download/v0.3.29/openfang-x86_64-unknown-linux-gnu.tar.gz \
+RUN curl -L https://github.com/RightNow-AI/openfang/releases/download/v0.3.34/openfang-x86_64-unknown-linux-gnu.tar.gz \
     -o openfang.tar.gz \
     && tar -xzf openfang.tar.gz \
     && mv openfang /usr/local/bin/openfang
