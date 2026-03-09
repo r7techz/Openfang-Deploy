@@ -6,9 +6,9 @@
 # ──────────────────────────────────────────────────────
 # 🏠 PATHS
 # ──────────────────────────────────────────────────────
-home_dir = "/data"
-data_dir = "/data/data"
-log_level = "info"                   # trace | debug | info | warn | error
+#home_dir = "/data"
+#data_dir = "/data/data"
+#log_level = "info"                   # trace | debug | info | warn | error
 
 # ──────────────────────────────────────────────────────
 # 🔐 AUTH — Ye sabse important line hai!
@@ -21,10 +21,10 @@ api_listen = "0.0.0.0:4200"                 # Railway/Docker ke liye 0.0.0.0
 # ──────────────────────────────────────────────────────
 # ⚙️ GENERAL SETTINGS
 # ──────────────────────────────────────────────────────
-mode            = "default"          # stable | default | dev
-language        = "en"
-usage_footer    = "full"             # off | tokens | cost | full
-network_enabled = false              # P2P network band rakho (security)
+#mode            = "default"          # stable | default | dev
+#language        = "en"
+#usage_footer    = "full"             # off | tokens | cost | full
+#network_enabled = false              # P2P network band rakho (security)
 
 
 # ──────────────────────────────────────────────────────
@@ -55,45 +55,45 @@ api_key_env = "GEMINI_API_KEY"       # Optional backup
 # ──────────────────────────────────────────────────────
 # 👤 RBAC USERS — Sirf Admin!
 # ──────────────────────────────────────────────────────
-[[users]]
-name = "Admin"
-role = "owner"                       # owner | admin | user | viewer
-api_key_hash = ""                    # api_key se auto-set hota hai
+#[[users]]
+#name = "Admin"
+#role = "owner"                       # owner | admin | user | viewer
+#api_key_hash = ""                    # api_key se auto-set hota hai
 
 
 # ──────────────────────────────────────────────────────
 # 🧠 MEMORY
 # ──────────────────────────────────────────────────────
-[memory]
-embedding_model          = "all-MiniLM-L6-v2"
-consolidation_threshold  = 10000
-decay_rate               = 0.05
+#[memory]
+#embedding_model          = "all-MiniLM-L6-v2"
+#consolidation_threshold  = 10000
+#decay_rate               = 0.05
 # sqlite_path = "/data/data/openfang.db"
 
 
 # ──────────────────────────────────────────────────────
 # 🌍 NETWORK — OFP Protocol (band rakho jab tak zarurat na ho)
 # ──────────────────────────────────────────────────────
-[network]
-listen_addresses = ["/ip4/0.0.0.0/tcp/0"]
-bootstrap_peers  = []
-mdns_enabled     = false             # Local network discovery off
-max_peers        = 50
-shared_secret    = ""
+#[network]
+#listen_addresses = ["/ip4/0.0.0.0/tcp/0"]
+#bootstrap_peers  = []
+#mdns_enabled     = false             # Local network discovery off
+#max_peers        = 50
+#shared_secret    = ""
 
 
 # ──────────────────────────────────────────────────────
 # 🌐 WEB TOOLS — Search provider
 # ──────────────────────────────────────────────────────
-[web]
-search_provider    = "auto"          # auto | brave | tavily | duckduckgo
-cache_ttl_minutes  = 15
+#[web]
+#search_provider    = "auto"          # auto | brave | tavily | duckduckgo
+#cache_ttl_minutes  = 15
 
-[web.fetch]
-max_chars          = 50000
-max_response_bytes = 10485760        # 10 MB
-timeout_secs       = 30
-readability        = true
+#[web.fetch]
+#max_chars          = 50000
+#max_response_bytes = 10485760        # 10 MB
+#timeout_secs       = 30
+#readability        = true
 
 
 # ──────────────────────────────────────────────────────
