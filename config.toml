@@ -1,130 +1,20 @@
-# ================================================================
-# OpenFang config.toml — Official Docs se banaya gaya
-# Admin-Only Access — Koi bhi public user access NAHI kar sakta
-# ================================================================
+[core]
+api_key = "admin123"
+api_listen = "0.0.0.0:4200"
 
-# ──────────────────────────────────────────────────────
-# 🏠 PATHS
-# ──────────────────────────────────────────────────────
-#home_dir = "/data"
-#data_dir = "/data/data"
-#log_level = "info"                   # trace | debug | info | warn | error
-
-# ──────────────────────────────────────────────────────
-# 🔐 AUTH — Ye sabse important line hai!
-# api_key set karne se SARE endpoints lock ho jaate hain
-# Bina key ke koi bhi dashboard access NAHI kar sakta!
-# ──────────────────────────────────────────────────────
-api_key    = "Admin786"  # ← CHANGE KARO! (koi bhi strong password)
-api_listen = "0.0.0.0:4200"                 # Railway/Docker ke liye 0.0.0.0
-
-# ──────────────────────────────────────────────────────
-# ⚙️ GENERAL SETTINGS
-# ──────────────────────────────────────────────────────
-#mode            = "default"          # stable | default | dev
-#language        = "en"
-#usage_footer    = "full"             # off | tokens | cost | full
-#network_enabled = false              # P2P network band rakho (security)
-
-
-# ──────────────────────────────────────────────────────
-# 🤖 DEFAULT MODEL — Groq (Free + Fast)
-# ──────────────────────────────────────────────────────
 [default_model]
-provider    = "groq"
-model       = "llama-3.3-70b-versatile"
-api_key_env = "GROQ_API_KEY"         # Railway pe ye env variable set karo
-# base_url  = ""                     # Optional: custom endpoint
+provider = "PROONE"
+model = "MODEL"
+api_key_env = "PKEY"
 
+[hands.browser]
+model_provider = "HPRO"
+model = "HMODEL"
+model_api_key_env = "HKEY"
 
-# ──────────────────────────────────────────────────────
-# 🔄 FALLBACK PROVIDERS — Agar Groq down ho
-# ──────────────────────────────────────────────────────
-[[fallback_providers]]
-provider    = "ollama"
-model       = "tinyllama"
-api_key_env = ""
-base_url    = "https://ollama-production-a443.up.railway.app"
+[telegram]
+enabled = true
+bot_token_env = "TELEGRAM_BOT_TOKEN"
 
-[[fallback_providers]]
-provider    = "gemini"
-model       = "gemini-2.0-flash"
-api_key_env = "GEMINI_API_KEY"       # Optional backup
-
-
-# ──────────────────────────────────────────────────────
-# 👤 RBAC USERS — Sirf Admin!
-# ──────────────────────────────────────────────────────
-#[[users]]
-#name = "Admin"
-#role = "owner"                       # owner | admin | user | viewer
-#api_key_hash = ""                    # api_key se auto-set hota hai
-
-
-# ──────────────────────────────────────────────────────
-# 🧠 MEMORY
-# ──────────────────────────────────────────────────────
-#[memory]
-#embedding_model          = "all-MiniLM-L6-v2"
-#consolidation_threshold  = 10000
-#decay_rate               = 0.05
-# sqlite_path = "/data/data/openfang.db"
-
-
-# ──────────────────────────────────────────────────────
-# 🌍 NETWORK — OFP Protocol (band rakho jab tak zarurat na ho)
-# ──────────────────────────────────────────────────────
-#[network]
-#listen_addresses = ["/ip4/0.0.0.0/tcp/0"]
-#bootstrap_peers  = []
-#mdns_enabled     = false             # Local network discovery off
-#max_peers        = 50
-#shared_secret    = ""
-
-
-# ──────────────────────────────────────────────────────
-# 🌐 WEB TOOLS — Search provider
-# ──────────────────────────────────────────────────────
-#[web]
-#search_provider    = "auto"          # auto | brave | tavily | duckduckgo
-#cache_ttl_minutes  = 15
-
-#[web.fetch]
-#max_chars          = 50000
-#max_response_bytes = 10485760        # 10 MB
-#timeout_secs       = 30
-#readability        = true
-
-
-# ──────────────────────────────────────────────────────
-# 💬 CHANNELS — Optional (uncomment karo jo chahiye)
-# ──────────────────────────────────────────────────────
-# [channels.telegram]
-# bot_token_env    = "TELEGRAM_BOT_TOKEN"
-# allowed_users    = [123456789]     # Sirf ye users access kar sakte hain
-# poll_interval_secs = 1
-
-# [channels.discord]
-# bot_token_env    = "DISCORD_BOT_TOKEN"
-# allowed_guilds   = [123456789]
-# intents          = 33280
-
-# [channels.slack]
-# app_token_env    = "SLACK_APP_TOKEN"
-# bot_token_env    = "SLACK_BOT_TOKEN"
-# allowed_channels = []
-
-
-# ================================================================
-# 📋 RAILWAY PE YE ENVIRONMENT VARIABLES ADD KARO:
-#
-#   GROQ_API_KEY   →  gsk_tumhari_groq_key_yahan   (ZARURI)
-#   OPENFANG_HOME  →  /data                         (ZARURI)
-#   GEMINI_API_KEY →  AIza_tumhari_key              (Optional)
-#
-# 🔐 Dashboard Access:
-#   URL kholo → api_key ki value enter karo
-#
-# 📁 Dockerfile mein add karo:
-#   COPY config.toml /data/config.toml
-# ================================================================
+[network]
+listen_addr = "0.0.0.0:4200"
