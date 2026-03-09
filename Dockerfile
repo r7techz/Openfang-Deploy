@@ -20,7 +20,9 @@ RUN curl -L https://github.com/RightNow-AI/openfang/releases/download/v0.3.34/op
     -o openfang.tar.gz \
     && tar -xzf openfang.tar.gz \
     && mv openfang /usr/local/bin/openfang
-
+# Config aur Skills copy karo
+RUN mkdir -p /data
+COPY config.toml /data/config.toml
 EXPOSE 4200
 ENV OPENFANG_HOME=/data
 
