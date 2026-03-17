@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y \
     fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
 
-# create python command
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # install playwright
@@ -34,14 +33,20 @@ RUN pip3 install --break-system-packages playwright \
 
 WORKDIR /app
 
+# install OpenFang
 RUN curl -L https://github.com/RightNow-AI/openfang/releases/download/v0.4.4/openfang-x86_64-unknown-linux-gnu.tar.gz \
   -o openfang.tar.gz \
   && tar -xzf openfang.tar.gz \
-  && mv openfang /usr/local/bin/openfang
+  && mv openfang /usr/local/bin/openfang \
+  && rm openfang.tar.gz
 
-EXPOSE 4200
-
+COPY config.toml /root/.openfang/config.toml
+# Render requires dynamic port
+ENV PORT=50051
 ENV OPENFANG_HOME=/data
 
+EXPOSE 50051
+
 ENTRYPOINT ["openfang"]
-CMD ["start"]
+
+CMD ["gateway","--host","0.0.0.0","--port","50051"]
